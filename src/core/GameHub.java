@@ -5,6 +5,10 @@ import model.Player;
 public class GameHub {
     Player player;
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public GameHub(Player player) {
         this.player = player;
     }

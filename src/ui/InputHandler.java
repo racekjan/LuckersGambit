@@ -7,6 +7,7 @@ public class InputHandler {
 
     public static String readText(String prompt){
         System.out.println(prompt);
+        sc.nextLine();
         return sc.nextLine();
     }
 
