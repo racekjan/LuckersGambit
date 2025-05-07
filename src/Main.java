@@ -16,10 +16,6 @@ public class Main {
         int choice = InputHandler.readChoices(prompt, newGame, loadGame, end);
         if (choice == 0){
             GameHub hub = new GameHub(Player.createPlayer());
-            System.out.println(hub.getPlayer() == null);
-            System.out.println(hub.getPlayer().getBalance());
-            System.out.println(hub.getPlayer().getNickName());
-            System.out.println("..konec infa o hraci");
             hub.hubLoop();
         } else if (choice == 1) {
             System.out.println("Not yet implemented :(");
