@@ -4,6 +4,8 @@ import assets.RandomGen;
 import ui.InputHandler;
 
 public class Roulette extends Game {
+
+    private final double betMultiplyer = 1.6;
     public Roulette(String gameName, int minBet) {
         super(gameName, minBet);
     }
@@ -12,7 +14,8 @@ public class Roulette extends Game {
     public void startGame() {
         System.out.println("Priprava na roulette hru...");
         System.out.println("Vsazeno " + getInputBet());
-        // TODO: 07.05.2025 Implementace vsazeni 
+        player.decreaseBalance(getInputBet());
+        int winnings = getInputBet();
         int deathNumber = RandomGen.getRandomInt(1, 6);
         System.out.println("CHEAT: " + deathNumber);
         int counter = 0;
@@ -21,11 +24,15 @@ public class Roulette extends Game {
             System.out.println("Ruleta...");
             counter++;
             if (counter != deathNumber){
+                winnings *= betMultiplyer;
                 choice = InputHandler.readChoices("Prezil jste. Prejete si risknout dalsi pokus?", "Ano", "Ne");
             } else {
                 System.out.println("Ruletu jste prohral");
+                winnings = 0;
                 break;
             }
         }
+        System.out.println("Vysledek hry: " + winnings);
+        player.increaseBalance(winnings);
     }
 }
