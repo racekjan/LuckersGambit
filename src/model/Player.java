@@ -38,6 +38,10 @@ public class Player {
         return new Player(InputHandler.readText("Zadejte uzivatelske jmeno"), Constants.DEFAULT_START_BALANCE);
     }
 
+    public List<GameResult> getHistory() {
+        return history;
+    }
+
     public String getNickName() {
         return nickName;
     }
