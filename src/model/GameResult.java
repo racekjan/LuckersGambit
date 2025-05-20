@@ -4,7 +4,7 @@ import core.Game;
 
 public class GameResult {
     private Game game;
-    private int winnings;
+    private int winnings, bet;
     private boolean status;
 
     public Game getGame() {
@@ -31,20 +31,25 @@ public class GameResult {
         this.status = status;
     }
 
-    public GameResult(Game game, int winnings, boolean status) {
+    public int getBet() {
+        return bet;
+    }
+
+    public GameResult(Game game, int winnings, int bet, boolean status) {
         this.game = game;
         this.winnings = winnings;
+        this.bet = bet;
         this.status = status;
     }
 
     @Override
     public String toString() {
         return status ? "Game: " + game.getGameName()
-                + "\n Vsazeno: " + game.getInputBet()
+                + "\n Vsazeno: " + getBet()
                 + "\n Vyhrana castka: " + getWinnings()
                 :
                 "Game: " + game.getGameName()
-                + "\n Vsazeno: " + game.getInputBet()
+                + "\n Vsazeno: " + getBet()
                 + "\n Prohrano";
     }
 }

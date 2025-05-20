@@ -26,7 +26,7 @@ public class Player {
        if (history.isEmpty()){
            System.out.println("Zatim nebyla odehrana zadna hra");
        } else {
-           history.forEach(gameResult -> {
+           history.reversed().forEach(gameResult -> {
                System.out.println("#####");
                System.out.println(gameResult.toString());
                System.out.println("#####");
