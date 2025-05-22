@@ -42,6 +42,9 @@ public class DiceRoll extends Game {
         int winnings = getInputBet();
         printTrack(position);
         int choice = InputHandler.readChoices("Prejete si hodit?", "Ano", "Ne");
+        if (choice==1){
+            player.decreaseBalance(winnings);
+        }
         while (choice != 1) {
             System.out.println("jumping...");
             roll = RandomGen.getRandomInt(1,6);
@@ -58,6 +61,7 @@ public class DiceRoll extends Game {
         if (position <= 4) winnings *= 1.1;
         else if (position <= 6) winnings *= 1.4;
         else winnings *= 2;
+        player.increaseBalance(winnings);
         System.out.println("Vyhráno: " + winnings);
         return new GameResult(this, winnings, getInputBet(), true);
     }

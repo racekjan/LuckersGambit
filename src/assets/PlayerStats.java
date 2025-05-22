@@ -17,8 +17,8 @@ public class PlayerStats {
         System.out.println("Total Games Played: " + history.size());
         System.out.println("Počet vyhraných her: " + countWins(history));
         System.out.println("Prohry: " + countLosses(history));
-        System.out.println("Zisk/ztráta" + totalWinnings(history));
-        System.out.println("Win rate" + getWinRate(history));
+        System.out.println("Zisk/ztráta: " + totalWinnings(history, player));
+        System.out.println("Win rate: " + getWinRate(history));
     }
 
     public static long countWins(List<GameResult> history) {
@@ -26,14 +26,22 @@ public class PlayerStats {
     }
 
     public static long countLosses(List<GameResult> history) {
-        return 0;
+        return history.size()-countWins(history);
     }
 
-    public static int totalWinnings(List<GameResult> history) {
-        return 0;
+    public static int totalWinnings(List<GameResult> history, Player player) {
+        int bets = 0;
+        int winnings = 0;
+        for (GameResult gameResult : history) {
+            bets += gameResult.getBet();
+            winnings += gameResult.getWinnings();
+
+        }
+        return winnings-bets;
+        //return player.getBalance()-Constants.DEFAULT_START_BALANCE;
     }
 
     public static String getWinRate(List<GameResult> history) {
-        return "X %";
+        return countWins(history)/history.size()*100 + "%";
     }
 }

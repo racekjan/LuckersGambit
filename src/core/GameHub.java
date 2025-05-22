@@ -43,7 +43,13 @@ public class GameHub {
                 break;
             }
             if (choice == games.length){
+                //osetreni, pokud je v historii nic neni
+                if (player.getHistory().isEmpty()){
+                    System.out.println("Nebylo nic odehráno");
+                    continue;
+                }
                 choice = InputHandler.readChoices("Vyberte, co chcete vypsat: ", "Historie", "Statistiky her");
+
                 if (choice == 1){
                     getPlayer().printHistory();
                 } else {
